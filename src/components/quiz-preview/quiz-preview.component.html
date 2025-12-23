@@ -1,0 +1,50 @@
+
+<div class="animate-fade-in-up">
+  <div class="flex flex-wrap justify-between items-center gap-4 mb-6">
+    <div>
+      <h1 class="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-purple-500 dark:from-sky-400 dark:to-purple-400">
+        Quiz Preview & Export
+      </h1>
+      <p class="text-slate-600 dark:text-slate-400 mt-1">
+        Here is your self-contained quiz. You can download it, open it in a new tab, or go back to editing.
+      </p>
+    </div>
+    <div class="flex items-center gap-2">
+      <button (click)="backToHome.emit()" class="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">
+        &larr; Back to Home
+      </button>
+       <span class="text-slate-300 dark:text-slate-600">|</span>
+      <button (click)="backToCreator.emit()" class="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition">
+        Back to Creator
+      </button>
+    </div>
+  </div>
+
+  <div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-lg mb-6">
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <button (click)="downloadHtml()" class="flex items-center gap-2 px-5 py-2 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transform hover:scale-105 transition-all duration-300 shadow-md">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+        Download as .html
+      </button>
+      <button (click)="openInNewTab()" class="flex items-center gap-2 px-5 py-2 bg-sky-600 text-white rounded-lg font-semibold hover:bg-sky-700 transform hover:scale-105 transition-all duration-300 shadow-md">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+          <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+        </svg>
+        Open in New Tab
+      </button>
+    </div>
+  </div>
+
+  <div class="w-full h-[70vh] bg-white dark:bg-slate-800 rounded-xl shadow-2xl overflow-hidden">
+    @if(quizSrc(); as src) {
+      <iframe [src]="src" class="w-full h-full border-0" title="Quiz Preview"></iframe>
+    } @else {
+      <div class="flex items-center justify-center h-full text-slate-500">
+        <p>Generating quiz preview...</p>
+      </div>
+    }
+  </div>
+</div>
